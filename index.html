@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GxPChat | Regulated AI Agents for Life Sciences via Secure MCP</title>
+  <meta name="description" content="GxPChat connects life sciences teams with specialized AI agents for SOP drafting, Computer System Validation (CSV), Audit Readiness, and IT Help Desk through secure MCP servers adhering to 21 CFR Part 11." />
+  <link rel="canonical" href="https://gxpchat.com/" />
+
+  <!-- Open Graph / Social Media Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="GxPChat" />
+  <meta property="og:url" content="https://gxpchat.com/" />
+  <meta property="og:title" content="GxPChat | Regulated AI Agents for Life Sciences via Secure MCP" />
+  <meta property="og:description" content="GxPChat connects life sciences teams with specialized AI agents for SOP drafting, CSV, Audit Readiness, and IT Help Desk through secure MCP servers adhering to 21 CFR Part 11." />
+  <meta property="og:image" content="https://gxpchat.com/logo.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="GxPChat | Regulated AI Agents for Life Sciences" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://gxpchat.com/" />
+  <meta name="twitter:title" content="GxPChat | Regulated AI Agents for Life Sciences via Secure MCP" />
+  <meta name="twitter:description" content="GxPChat connects life sciences teams with specialized AI agents for SOP drafting, CSV, Audit Readiness, and IT Help Desk through secure MCP servers adhering to 21 CFR Part 11." />
+  <meta name="twitter:image" content="https://gxpchat.com/logo.png" />
+
+  <!-- Structured Data / JSON-LD -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "GxPChat",
+      "url": "https://gxpchat.com",
+      "logo": "https://gxpchat.com/logo.png",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Saram Consulting",
+        "url": "https://saram.io"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "GxPChat",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser, Cloud, On-Premise",
+      "description": "GxPChat connects life sciences teams with regulated AI agents through secure MCP servers for SOP drafting, Computer System Validation, Audit, and Regulatory Asset Management.",
+      "url": "https://gxpchat.com"
+    }
+  ]
+  </script>
+
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* GxPChat Clean Light Design System */
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --text-muted: #52525b;
+      --font-serif: "Playfair Display", serif;
+      --font-mono: "Roboto Mono", monospace;
+      --underline-color: rgba(0, 0, 0, 0.15);
+      --underline-hover: rgba(0, 0, 0, 0.85);
+      --border-color: rgba(0, 0, 0, 0.08);
+      --card-bg: rgba(0, 0, 0, 0.02);
+      --card-bg-hover: rgba(0, 0, 0, 0.04);
+      --accent-color: #000000;
+      --gold-color: #d97706;
+      --gold-badge-bg: rgba(217, 119, 6, 0.08);
+      --gold-badge-border: rgba(217, 119, 6, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      overflow-y: scroll;
+      background-color: var(--bg-color);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-mono);
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 30px;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Main Content Sections */
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    section {
+      /* border-top: 1px solid var(--border-color);
+      padding-top: 24px; */
+    }
+
+    section:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .section-title {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title::before {
+      content: "";
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--text-color);
+      opacity: 0.5;
+    }
+
+    .section-text {
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      line-height: 1.65;
+    }
+
+    /* Hero Section */
+    .hero-text {
+      max-width: 820px;
+    }
+
+    .hero-text h1 {
+      font-family: var(--font-serif);
+      margin-bottom: 12px;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 1.25;
+      color: var(--text-color);
+    }
+
+    .hero-text .lead {
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--text-color);
+      margin-bottom: 10px;
+    }
+
+    .hero-text p {
+      margin-bottom: 10px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .hero-text strong {
+      color: var(--text-color);
+      font-weight: 600;
+    }
+
+    /* Demo Video Showcase */
+    .video-showcase-container {
+      background-color: #fafafa;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 18px;
+      margin-top: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+      transition: border-color 0.25s ease;
+    }
+
+    .video-showcase-container:hover {
+      border-color: rgba(0, 0, 0, 0.18);
+    }
+
+    .video-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .video-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-color);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .video-status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #16a34a;
+      box-shadow: 0 0 6px rgba(22, 163, 74, 0.4);
+      display: inline-block;
+    }
+
+    .badge-gold {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: 3px;
+      color: var(--gold-color);
+      background-color: var(--gold-badge-bg);
+      border: 1px solid var(--gold-badge-border);
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+      background-color: #000000;
+      border: 1px solid var(--border-color);
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      height: auto;
+      display: block;
+      outline: none;
+      background-color: #000000;
+    }
+
+    .video-caption {
+      margin-top: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .video-caption-notes {
+      flex-grow: 1;
+    }
+
+    .video-caption-link {
+      color: var(--text-color);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      -webkit-text-decoration-color: var(--underline-color);
+      text-decoration-color: var(--underline-color);
+    }
+
+    .video-caption-link:hover {
+      -webkit-text-decoration-color: var(--underline-hover);
+      text-decoration-color: var(--underline-hover);
+    }
+
+    /* Links & Contact */
+    .service-link {
+      text-underline-offset: 4px;
+      color: var(--text-color);
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      -webkit-text-decoration-color: var(--underline-color);
+      text-decoration-color: var(--underline-color);
+      transition: text-decoration-color 0.2s, color 0.2s;
+    }
+
+    .service-link:hover {
+      -webkit-text-decoration-color: var(--underline-hover);
+      text-decoration-color: var(--underline-hover);
+    }
+
+    /* Footer */
+    footer {
+      opacity: 0.55;
+      margin-top: 36px;
+      font-size: 11px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 16px;
+      transition: opacity 0.2s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer:hover {
+      opacity: 0.9;
+    }
+
+    /* Responsive Media Queries */
+    @media (max-width: 768px) {
+      body {
+        padding: 36px 18px;
+      }
+
+      .hero-text h1 {
+        font-size: 26px;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+  <div class="container page-gxpchat">
+    <main id="mainContent">
+      <!-- Hero Section -->
+      <section class="hero-text" id="heroSection">
+        <h1>Drug discovery shouldn't be the only place for AI in life sciences.</h1>
+
+        <p class="lead">
+          Look closer: AI can make your operational teams nimble and efficient.
+        </p>
+
+        <p>
+          LLMs excel at writing documents—the bulk of work in Quality and Computer System Validation (CSV). <strong>GxPChat</strong> connects your teams with specialized AI agents (SOP drafting, Audit, CSV, IT Help Desk, Regulatory Asset Management) via secure MCP servers, strictly adhering to <strong>21 CFR Part 11</strong>.
+        </p>
+      </section>
+
+      <!-- Live Demo Section -->
+      <section id="demo">
+
+        <div class="video-showcase-container" id="videoContainer">
+
+          <div class="video-wrapper">
+            <video
+              id="gxpDemoVideo"
+              controls
+              preload="metadata"
+              playsinline
+            >
+              <source src="https://files.gxpchat.com/gxpchat-early-demo.webm" type="video/webm" />
+              <p style="padding: 20px; color: var(--text-muted);">
+                Your browser does not support the video tag. You can 
+                <a href="https://files.gxpchat.com/gxpchat-early-demo.webm" target="_blank" rel="noopener noreferrer" class="service-link">
+                  download the video demo here
+                </a>.
+              </p>
+            </video>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact & Collaboration Section -->
+      <section id="contact">
+        <h2 class="section-title">Contact & Pilot Access</h2>
+        <p class="section-text">
+          We are actively partnering with innovative biopharma, biotech, and medical device organizations to deploy tailored GxPChat pilot environments.
+        </p>
+        
+        <p class="section-text" style="margin-top: 12px;">
+          For custom MCP server integrations, CSV pipeline automation, or live demonstrations:
+        </p>
+
+        <p class="section-text" style="margin-top: 8px;">
+          Email:
+          <a href="mailto:duk@saram.io" class="service-link" id="emailDuke">duk@saram.io</a>
+        </p>
+        <p class="section-text">
+          Phone:
+          <a href="tel:+19253946606" class="service-link" id="phoneLink">925 394-6606</a>
+        </p>
+        <p class="section-text">
+          Parent Organization:
+          <a href="https://saram.io" class="service-link" id="saramLink" target="_blank" rel="noopener noreferrer">Saram Consulting</a>
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="mainFooter">
+      <div>
+        GxPChat is developed by <a href="https://saram.io" class="service-link" target="_blank" rel="noopener noreferrer">Saram Consulting</a>.
+      </div>
+      <div style="opacity: 0.8;">
+        Built for 21 CFR Part 11 & GxP Compliance
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
