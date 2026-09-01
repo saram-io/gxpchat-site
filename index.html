@@ -190,6 +190,10 @@
       transition: border-color 0.25s ease;
     }
 
+    .video-showcase-container + .video-showcase-container {
+      margin-top: 20px;
+    }
+
     .video-showcase-container:hover {
       border-color: rgba(0, 0, 0, 0.18);
     }
@@ -353,24 +357,110 @@
 
       <!-- Live Demo Section -->
       <section id="demo">
+        <h2 class="section-title">Live Demonstrations</h2>
 
-        <div class="video-showcase-container" id="videoContainer">
-
+        <!-- Overview Demo -->
+        <div class="video-showcase-container" id="videoContainerOverview">
+          <div class="video-header">
+            <div class="video-title">
+              <span class="video-status-dot"></span>
+              Live Demo: Overview & Validation Session
+            </div>
+            <span class="badge-gold">21 CFR Part 11</span>
+          </div>
           <div class="video-wrapper">
             <video
-              id="gxpDemoVideo"
+              id="gxpDemoVideoOverview"
               controls
               preload="metadata"
               playsinline
             >
-              <source src="https://files.gxpchat.com/gxpchat-early-demo-2026-08-26.webm" type="video/webm" />
+              <source src="https://files.gxpchat.com/gxpchat-2026-08-31.mp4" type="video/mp4" />
               <p style="padding: 20px; color: var(--text-muted);">
                 Your browser does not support the video tag. You can 
-                <a href="https://files.gxpchat.com/gxpchat-early-demo.webm" target="_blank" rel="noopener noreferrer" class="service-link">
+                <a href="https://files.gxpchat.com/gxpchat-2026-08-31.mp4" target="_blank" rel="noopener noreferrer" class="service-link">
                   download the video demo here
                 </a>.
               </p>
             </video>
+          </div>
+          <div class="video-caption">
+            <div class="video-caption-notes">
+              End-to-end walkthrough of GxPChat connected to regulated MCP servers.
+            </div>
+            <a href="https://files.gxpchat.com/gxpchat-2026-08-31.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
+              Direct video link &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Submit IT Ticket Demo -->
+        <div class="video-showcase-container" id="videoContainerTicket">
+          <div class="video-header">
+            <div class="video-title">
+              <span class="video-status-dot"></span>
+              Agent Workflow: Submit IT Ticket
+            </div>
+            <span class="badge-gold">ITSM Agent</span>
+          </div>
+          <div class="video-wrapper">
+            <video
+              id="gxpDemoVideoTicket"
+              controls
+              preload="metadata"
+              playsinline
+            >
+              <source src="https://files.gxpchat.com/gxpchat-submit-it-ticket.mp4" type="video/mp4" />
+              <p style="padding: 20px; color: var(--text-muted);">
+                Your browser does not support the video tag. You can 
+                <a href="https://files.gxpchat.com/gxpchat-submit-it-ticket.mp4" target="_blank" rel="noopener noreferrer" class="service-link">
+                  download the video demo here
+                </a>.
+              </p>
+            </video>
+          </div>
+          <div class="video-caption">
+            <div class="video-caption-notes">
+              Automated IT Help Desk ticketing and access request workflow via secure MCP tools.
+            </div>
+            <a href="https://files.gxpchat.com/gxpchat-submit-it-ticket.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
+              Direct video link &rarr;
+            </a>
+          </div>
+        </div>
+
+        <!-- Add Asset Demo -->
+        <div class="video-showcase-container" id="videoContainerAsset">
+          <div class="video-header">
+            <div class="video-title">
+              <span class="video-status-dot"></span>
+              Agent Workflow: Add Regulated Asset
+            </div>
+            <span class="badge-gold">Asset Management</span>
+          </div>
+          <div class="video-wrapper">
+            <video
+              id="gxpDemoVideoAsset"
+              controls
+              preload="metadata"
+              playsinline
+            >
+              <source src="https://files.gxpchat.com/gxpchat-add-asset.mp4" type="video/mp4" />
+              <p style="padding: 20px; color: var(--text-muted);">
+                Your browser does not support the video tag. You can 
+                <a href="https://files.gxpchat.com/gxpchat-add-asset.mp4" target="_blank" rel="noopener noreferrer" class="service-link">
+                  download the video demo here
+                </a>.
+              </p>
+            </video>
+          </div>
+          <div class="video-caption">
+            <div class="video-caption-notes">
+              Regulated asset registration and validation tracking with audit trail compliance.
+            </div>
+            <a href="https://files.gxpchat.com/gxpchat-add-asset.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
+              Direct video link &rarr;
+            </a>
           </div>
         </div>
       </section>
