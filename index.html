@@ -187,7 +187,8 @@
       padding: 18px;
       margin-top: 12px;
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
-      transition: border-color 0.25s ease;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      scroll-margin-top: 32px;
     }
 
     .video-showcase-container + .video-showcase-container {
@@ -198,6 +199,28 @@
       border-color: rgba(0, 0, 0, 0.18);
     }
 
+    .video-showcase-container:target,
+    .video-showcase-container.is-targeted {
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.18), 0 12px 36px rgba(0, 0, 0, 0.08);
+      animation: highlightPulse 2s ease-out;
+    }
+
+    @keyframes highlightPulse {
+      0% {
+        box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.4), 0 12px 36px rgba(0, 0, 0, 0.12);
+        border-color: var(--gold-color);
+      }
+      70% {
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.18), 0 12px 36px rgba(0, 0, 0, 0.08);
+        border-color: var(--accent-color);
+      }
+      100% {
+        box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.18), 0 12px 36px rgba(0, 0, 0, 0.08);
+        border-color: var(--accent-color);
+      }
+    }
+
     .video-header {
       display: flex;
       justify-content: space-between;
@@ -205,6 +228,14 @@
       margin-bottom: 12px;
       padding-bottom: 10px;
       border-bottom: 1px solid var(--border-color);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .video-title-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .video-title {
@@ -215,6 +246,57 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      margin: 0;
+    }
+
+    .video-anchor-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      opacity: 0.35;
+      font-size: 13px;
+      line-height: 1;
+      transition: opacity 0.2s, color 0.2s;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+
+    .video-anchor-link:hover,
+    .video-title-group:hover .video-anchor-link {
+      opacity: 1;
+      color: var(--text-color);
+    }
+
+    .video-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .copy-link-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+      outline: none;
+    }
+
+    .copy-link-btn:hover {
+      background-color: #f4f4f5;
+      border-color: rgba(0, 0, 0, 0.25);
+    }
+
+    .copy-link-btn.copied {
+      background-color: #f0fdf4;
+      border-color: #86efac;
+      color: #166534;
     }
 
     .video-status-dot {
@@ -224,6 +306,7 @@
       background-color: #16a34a;
       box-shadow: 0 0 6px rgba(22, 163, 74, 0.4);
       display: inline-block;
+      flex-shrink: 0;
     }
 
     .badge-gold {
@@ -272,6 +355,13 @@
 
     .video-caption-notes {
       flex-grow: 1;
+    }
+
+    .video-caption-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .video-caption-link {
@@ -360,13 +450,20 @@
         <h2 class="section-title">Live Demonstrations</h2>
 
         <!-- Overview Demo -->
-        <div class="video-showcase-container" id="videoContainerOverview">
+        <div class="video-showcase-container" id="overview" data-alias="demo-overview,videoContainerOverview">
           <div class="video-header">
-            <div class="video-title">
+            <div class="video-title-group">
               <span class="video-status-dot"></span>
-              Live Demo: Overview & Validation Session
+              <h3 class="video-title">Live Demo: Overview & Validation Session</h3>
+              <a href="#overview" class="video-anchor-link" title="Direct link to this demo" aria-label="Direct link to this demo">#</a>
             </div>
-            <span class="badge-gold">21 CFR Part 11</span>
+            <div class="video-actions">
+              <button type="button" class="copy-link-btn" data-copy-url="#overview" title="Copy direct link to this demo">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy Link</span>
+              </button>
+              <span class="badge-gold">21 CFR Part 11</span>
+            </div>
           </div>
           <div class="video-wrapper">
             <video
@@ -388,20 +485,29 @@
             <div class="video-caption-notes">
               End-to-end walkthrough of GxPChat connected to regulated MCP servers.
             </div>
-            <a href="https://files.gxpchat.com/gxpchat-2026-08-31.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
-              Direct video link &rarr;
-            </a>
+            <div class="video-caption-actions">
+              <a href="https://files.gxpchat.com/gxpchat-2026-08-31.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
+                Direct MP4 &rarr;
+              </a>
+            </div>
           </div>
         </div>
 
         <!-- QMS Dashboard Demo -->
-        <div class="video-showcase-container" id="videoContainerDashboard">
+        <div class="video-showcase-container" id="dashboard" data-alias="demo-dashboard,qms-dashboard,videoContainerDashboard">
           <div class="video-header">
-            <div class="video-title">
+            <div class="video-title-group">
               <span class="video-status-dot"></span>
-              Live Demo: QMS Dashboard & System of Record
+              <h3 class="video-title">Live Demo: QMS Dashboard & System of Record</h3>
+              <a href="#dashboard" class="video-anchor-link" title="Direct link to this demo" aria-label="Direct link to this demo">#</a>
             </div>
-            <span class="badge-gold">QMS Portal</span>
+            <div class="video-actions">
+              <button type="button" class="copy-link-btn" data-copy-url="#dashboard" title="Copy direct link to this demo">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy Link</span>
+              </button>
+              <span class="badge-gold">QMS Portal</span>
+            </div>
           </div>
           <div class="video-wrapper">
             <video
@@ -424,20 +530,29 @@
             <div class="video-caption-notes">
               Live walkthrough of the Life Sciences QMS dashboard, agent telemetry, compliance graph explorer, and audit trail system of record.
             </div>
-            <a href="https://files.gxpchat.com/gxpchat-dashboard.mov" target="_blank" rel="noopener noreferrer" class="video-caption-link">
-              Direct video link &rarr;
-            </a>
+            <div class="video-caption-actions">
+              <a href="https://files.gxpchat.com/gxpchat-dashboard.mov" target="_blank" rel="noopener noreferrer" class="video-caption-link">
+                Direct MOV &rarr;
+              </a>
+            </div>
           </div>
         </div>
 
         <!-- Submit IT Ticket Demo -->
-        <div class="video-showcase-container" id="videoContainerTicket">
+        <div class="video-showcase-container" id="ticket" data-alias="it-ticket,submit-ticket,submit-it-ticket,videoContainerTicket">
           <div class="video-header">
-            <div class="video-title">
+            <div class="video-title-group">
               <span class="video-status-dot"></span>
-              Agent Workflow: Submit IT Ticket
+              <h3 class="video-title">Agent Workflow: Submit IT Ticket</h3>
+              <a href="#ticket" class="video-anchor-link" title="Direct link to this demo" aria-label="Direct link to this demo">#</a>
             </div>
-            <span class="badge-gold">ITSM Agent</span>
+            <div class="video-actions">
+              <button type="button" class="copy-link-btn" data-copy-url="#ticket" title="Copy direct link to this demo">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy Link</span>
+              </button>
+              <span class="badge-gold">ITSM Agent</span>
+            </div>
           </div>
           <div class="video-wrapper">
             <video
@@ -459,20 +574,29 @@
             <div class="video-caption-notes">
               Automated IT Help Desk ticketing and access request workflow via secure MCP tools.
             </div>
-            <a href="https://files.gxpchat.com/gxpchat-submit-it-ticket.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
-              Direct video link &rarr;
-            </a>
+            <div class="video-caption-actions">
+              <a href="https://files.gxpchat.com/gxpchat-submit-it-ticket.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
+                Direct MP4 &rarr;
+              </a>
+            </div>
           </div>
         </div>
 
         <!-- Add Asset Demo -->
-        <div class="video-showcase-container" id="videoContainerAsset">
+        <div class="video-showcase-container" id="asset" data-alias="add-asset,asset-management,videoContainerAsset">
           <div class="video-header">
-            <div class="video-title">
+            <div class="video-title-group">
               <span class="video-status-dot"></span>
-              Agent Workflow: Add Regulated Asset
+              <h3 class="video-title">Agent Workflow: Add Regulated Asset</h3>
+              <a href="#asset" class="video-anchor-link" title="Direct link to this demo" aria-label="Direct link to this demo">#</a>
             </div>
-            <span class="badge-gold">Asset Management</span>
+            <div class="video-actions">
+              <button type="button" class="copy-link-btn" data-copy-url="#asset" title="Copy direct link to this demo">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy Link</span>
+              </button>
+              <span class="badge-gold">Asset Management</span>
+            </div>
           </div>
           <div class="video-wrapper">
             <video
@@ -494,9 +618,11 @@
             <div class="video-caption-notes">
               Regulated asset registration and validation tracking with audit trail compliance.
             </div>
-            <a href="https://files.gxpchat.com/gxpchat-add-asset.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
-              Direct video link &rarr;
-            </a>
+            <div class="video-caption-actions">
+              <a href="https://files.gxpchat.com/gxpchat-add-asset.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
+                Direct MP4 &rarr;
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -537,5 +663,87 @@
       </div>
     </footer>
   </div>
+
+  <script>
+    (function () {
+      // Helper to copy text to clipboard with fallback
+      async function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch (err) {}
+        }
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        let successful = false;
+        try {
+          successful = document.execCommand("copy");
+        } catch (err) {
+          successful = false;
+        }
+        textArea.remove();
+        return successful;
+      }
+
+      // Attach copy link event handlers
+      document.querySelectorAll(".copy-link-btn").forEach(function (button) {
+        button.addEventListener("click", async function (e) {
+          e.preventDefault();
+          const targetHash = button.getAttribute("data-copy-url");
+          const url = new URL(targetHash, window.location.href).href;
+          const success = await copyText(url);
+          
+          if (success) {
+            const originalHTML = button.innerHTML;
+            button.classList.add("copied");
+            button.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Copied!</span>';
+            setTimeout(function () {
+              button.innerHTML = originalHTML;
+              button.classList.remove("copied");
+            }, 2000);
+          }
+        });
+      });
+
+      // Handle hash alias resolution and smooth focus
+      function handleHash() {
+        const rawHash = window.location.hash.replace(/^#/, "");
+        if (!rawHash) return;
+
+        let el = document.getElementById(rawHash);
+        if (!el) {
+          // Check data-alias
+          const containers = document.querySelectorAll(".video-showcase-container");
+          for (const container of containers) {
+            const aliases = (container.getAttribute("data-alias") || "").split(",");
+            if (aliases.includes(rawHash)) {
+              el = container;
+              break;
+            }
+          }
+        }
+
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          el.classList.add("is-targeted");
+          setTimeout(function () {
+            el.classList.remove("is-targeted");
+          }, 2500);
+        }
+      }
+
+      window.addEventListener("hashchange", handleHash);
+      if (window.location.hash) {
+        setTimeout(handleHash, 120);
+      }
+    })();
+  </script>
 </body>
 </html>
