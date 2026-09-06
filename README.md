@@ -7,6 +7,7 @@ Single standalone HTML marketing page for [GxPChat](https://gxpchat.com).
 - **Aesthetic**: Clean serif headings (`Playfair Display`), monospace typography (`Roboto Mono`), dark/light theme switching with instant localStorage persistence.
 - **Demo Videos & System Previews**: Embedded live demos (`gxpchat-2026-08-31.mp4`, `gxpchat-dashboard.mov`, `gxpchat-submit-it-ticket.mp4`, and `gxpchat-add-asset.mp4`) along with interactive high-resolution GxP Suite application screenshot showcases (`enterprise-qms.png`, `asset-management.png`, `it-help-desk.png`, `it-validation.png`, and `backup-disaster-recovery.png`).
 - **Core Value Proposition**: Extending AI beyond drug discovery into document-heavy GxP operations (SOP drafting, Computer System Validation, GxP Audit Readiness, Regulated IT Help Desk, Regulatory Asset Management, and Backup & Disaster Recovery).
+- **Documentation**: Official platform architecture and developer guides at [docs.gxpchat.com](https://docs.gxpchat.com).
 - **Compliance**: Built for 21 CFR Part 11, EU Annex 11, ISPE GAMP 5, FDA CSA, and ALCOA+ data integrity via secure Model Context Protocol (MCP) servers.
 
 ## Unique Demo URLs, Screenshots & Deep Links
