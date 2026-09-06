@@ -377,6 +377,247 @@
       text-decoration-color: var(--underline-hover);
     }
 
+    /* Screenshot Gallery & Showcase */
+    .screenshot-showcase-container {
+      background-color: #fafafa;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 18px;
+      margin-top: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+      scroll-margin-top: 32px;
+    }
+
+    .screenshot-tabs-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .screenshot-tab-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+
+    .screenshot-tab-btn:hover {
+      color: var(--text-color);
+      border-color: rgba(0, 0, 0, 0.25);
+      background: #f4f4f5;
+    }
+
+    .screenshot-tab-btn.active {
+      color: #000000;
+      font-weight: 600;
+      background: #f4f4f5;
+      border-color: #000000;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .screenshot-tab-num {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      line-height: 16px;
+      text-align: center;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.06);
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .screenshot-tab-btn.active .screenshot-tab-num {
+      background: #000000;
+      color: #ffffff;
+    }
+
+    .screenshot-image-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+      background-color: #09090b;
+      border: 1px solid var(--border-color);
+      cursor: zoom-in;
+    }
+
+    .screenshot-image-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .screenshot-image-wrapper:hover img {
+      opacity: 0.97;
+    }
+
+    .screenshot-overlay-hint {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    .screenshot-image-wrapper:hover .screenshot-overlay-hint {
+      opacity: 1;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background-color: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 1280px;
+      width: 100%;
+      max-height: 94vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-image-container {
+      max-width: 100%;
+      max-height: 82vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 82vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .lightbox-bar {
+      margin-top: 14px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: #e4e4e7;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .lightbox-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .lightbox-title {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .lightbox-counter {
+      color: #a1a1aa;
+      font-size: 11px;
+    }
+
+    .lightbox-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lightbox-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    .lightbox-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: -42px;
+      right: 0;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .lightbox-close-btn:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
     /* Links & Contact */
     .service-link {
       text-underline-offset: 4px;
@@ -447,14 +688,84 @@
 
       <!-- Live Demo Section -->
       <section id="demo">
-        <h2 class="section-title">Live Demonstrations</h2>
+        <h2 class="section-title">Live Demonstrations &amp; System Previews</h2>
+
+        <!-- Interactive GxP Suite Application Screenshot Explorer -->
+        <div class="video-showcase-container screenshot-showcase-container" id="screenshots" data-alias="demo-screenshots,suite-screenshots,app-previews,screenshots,gallery">
+          <div class="video-header">
+            <div class="video-title-group">
+              <span class="video-status-dot"></span>
+              <h3 class="video-title" id="screenshotActiveTitle">GxP Suite Explorer: Enterprise QMS &amp; System of Record</h3>
+              <a href="#screenshots" class="video-anchor-link" title="Direct link to screenshots" aria-label="Direct link to screenshots">#</a>
+            </div>
+            <div class="video-actions">
+              <button type="button" class="copy-link-btn" id="copyScreenshotLinkBtn" data-copy-url="#screenshots" title="Copy direct link to current preview">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy Link</span>
+              </button>
+              <span class="badge-gold" id="screenshotActiveBadge">21 CFR Part 11</span>
+            </div>
+          </div>
+
+          <!-- Application Module Tabs -->
+          <div class="screenshot-tabs-bar" role="tablist" aria-label="GxP Suite Modules">
+            <button type="button" class="screenshot-tab-btn active" data-index="0" role="tab" aria-selected="true">
+              <span class="screenshot-tab-num">1</span>
+              <span>Enterprise QMS</span>
+            </button>
+            <button type="button" class="screenshot-tab-btn" data-index="1" role="tab" aria-selected="false">
+              <span class="screenshot-tab-num">2</span>
+              <span>Asset Management</span>
+            </button>
+            <button type="button" class="screenshot-tab-btn" data-index="2" role="tab" aria-selected="false">
+              <span class="screenshot-tab-num">3</span>
+              <span>IT Help Desk</span>
+            </button>
+            <button type="button" class="screenshot-tab-btn" data-index="3" role="tab" aria-selected="false">
+              <span class="screenshot-tab-num">4</span>
+              <span>IT Validation (CSV/CSA)</span>
+            </button>
+            <button type="button" class="screenshot-tab-btn" data-index="4" role="tab" aria-selected="false">
+              <span class="screenshot-tab-num">5</span>
+              <span>Backup &amp; Disaster Recovery</span>
+            </button>
+          </div>
+
+          <!-- Screenshot Viewer Frame -->
+          <div class="screenshot-image-wrapper" id="screenshotTriggerWrapper" title="Click to view full-resolution screenshot">
+            <img
+              id="activeScreenshotImg"
+              src="/screenshots/enterprise-qms.png"
+              alt="Enterprise QMS &amp; System of Record"
+              loading="eager"
+            />
+            <div class="screenshot-overlay-hint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Click to enlarge (1024×730)</span>
+            </div>
+          </div>
+
+          <div class="video-caption">
+            <div class="video-caption-notes" id="screenshotCaptionNotes">
+              Life Sciences QMS &amp; CSV System of Record &bull; 3-Database division of labor (PostgreSQL SoR, Qdrant Vector, Memgraph LPG) with zero-trust EvidenceGate verification and real-time immutable audit trail stream.
+            </div>
+            <div class="video-caption-actions">
+              <a href="/dashboard/" id="screenshotModulePageLink" class="video-caption-link">
+                Dedicated Page &rarr;
+              </a>
+              <a href="/screenshots/enterprise-qms.png" id="screenshotDirectImgLink" target="_blank" rel="noopener noreferrer" class="video-caption-link">
+                Direct PNG &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
 
         <!-- Overview Demo -->
         <div class="video-showcase-container" id="overview" data-alias="demo-overview,videoContainerOverview">
           <div class="video-header">
             <div class="video-title-group">
               <span class="video-status-dot"></span>
-              <h3 class="video-title">Live Demo: Overview & Validation Session</h3>
+              <h3 class="video-title">Live Demo: Overview &amp; Validation Session</h3>
               <a href="#overview" class="video-anchor-link" title="Direct link to this demo" aria-label="Direct link to this demo">#</a>
             </div>
             <div class="video-actions">
@@ -486,6 +797,9 @@
               End-to-end walkthrough of GxPChat connected to regulated MCP servers.
             </div>
             <div class="video-caption-actions">
+              <a href="/overview/" class="video-caption-link">
+                Dedicated Page &rarr;
+              </a>
               <a href="https://files.gxpchat.com/gxpchat-2026-08-31.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
                 Direct MP4 &rarr;
               </a>
@@ -498,7 +812,7 @@
           <div class="video-header">
             <div class="video-title-group">
               <span class="video-status-dot"></span>
-              <h3 class="video-title">Live Demo: QMS Dashboard & System of Record</h3>
+              <h3 class="video-title">Live Demo: QMS Dashboard &amp; System of Record</h3>
               <a href="#dashboard" class="video-anchor-link" title="Direct link to this demo" aria-label="Direct link to this demo">#</a>
             </div>
             <div class="video-actions">
@@ -515,6 +829,7 @@
               controls
               preload="metadata"
               playsinline
+              poster="/screenshots/enterprise-qms.png"
             >
               <source src="https://files.gxpchat.com/gxpchat-dashboard.mov" type="video/quicktime" />
               <source src="https://files.gxpchat.com/gxpchat-dashboard.mov" type="video/mp4" />
@@ -531,6 +846,12 @@
               Live walkthrough of the Life Sciences QMS dashboard, agent telemetry, compliance graph explorer, and audit trail system of record.
             </div>
             <div class="video-caption-actions">
+              <a href="#" class="video-caption-link screenshot-open-trigger" data-screenshot-index="0">
+                View Screenshot &rarr;
+              </a>
+              <a href="/dashboard/" class="video-caption-link">
+                Dedicated Page &rarr;
+              </a>
               <a href="https://files.gxpchat.com/gxpchat-dashboard.mov" target="_blank" rel="noopener noreferrer" class="video-caption-link">
                 Direct MOV &rarr;
               </a>
@@ -560,6 +881,7 @@
               controls
               preload="metadata"
               playsinline
+              poster="/screenshots/it-help-desk.png"
             >
               <source src="https://files.gxpchat.com/gxpchat-submit-it-ticket.mp4" type="video/mp4" />
               <p style="padding: 20px; color: var(--text-muted);">
@@ -575,6 +897,12 @@
               Automated IT Help Desk ticketing and access request workflow via secure MCP tools.
             </div>
             <div class="video-caption-actions">
+              <a href="#" class="video-caption-link screenshot-open-trigger" data-screenshot-index="2">
+                View Screenshot &rarr;
+              </a>
+              <a href="/ticket/" class="video-caption-link">
+                Dedicated Page &rarr;
+              </a>
               <a href="https://files.gxpchat.com/gxpchat-submit-it-ticket.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
                 Direct MP4 &rarr;
               </a>
@@ -604,6 +932,7 @@
               controls
               preload="metadata"
               playsinline
+              poster="/screenshots/asset-management.png"
             >
               <source src="https://files.gxpchat.com/gxpchat-add-asset.mp4" type="video/mp4" />
               <p style="padding: 20px; color: var(--text-muted);">
@@ -619,8 +948,104 @@
               Regulated asset registration and validation tracking with audit trail compliance.
             </div>
             <div class="video-caption-actions">
+              <a href="#" class="video-caption-link screenshot-open-trigger" data-screenshot-index="1">
+                View Screenshot &rarr;
+              </a>
+              <a href="/asset/" class="video-caption-link">
+                Dedicated Page &rarr;
+              </a>
               <a href="https://files.gxpchat.com/gxpchat-add-asset.mp4" target="_blank" rel="noopener noreferrer" class="video-caption-link">
                 Direct MP4 &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CSV / CSA Validation Governance Platform Showcase -->
+        <div class="video-showcase-container" id="validation" data-alias="csv-validation,csa-validation,it-validation,validation-platform">
+          <div class="video-header">
+            <div class="video-title-group">
+              <span class="video-status-dot"></span>
+              <h3 class="video-title">Platform Showcase: CSV / CSA Validation Governance</h3>
+              <a href="#validation" class="video-anchor-link" title="Direct link to this demo" aria-label="Direct link to this demo">#</a>
+            </div>
+            <div class="video-actions">
+              <button type="button" class="copy-link-btn" data-copy-url="#validation" title="Copy direct link to this demo">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy Link</span>
+              </button>
+              <span class="badge-gold">ISPE GAMP 5 &amp; CSA</span>
+            </div>
+          </div>
+          <div class="screenshot-image-wrapper screenshot-trigger" data-screenshot-index="3" title="Click to view full-resolution screenshot">
+            <img
+              src="/screenshots/it-validation.png"
+              alt="CSV / CSA Validation Governance Platform"
+              loading="lazy"
+            />
+            <div class="screenshot-overlay-hint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Click to enlarge (1024×730)</span>
+            </div>
+          </div>
+          <div class="video-caption">
+            <div class="video-caption-notes">
+              Continuous algorithmic verification across life sciences computerized systems: V-Model traceability matrix (RTM), automated test script execution status (298 Pass, 154 Fail), GAMP 5 software categorization (Cat 3, 4, 5), and automated Validation Summary Report (VSR) generation.
+            </div>
+            <div class="video-caption-actions">
+              <a href="#" class="video-caption-link screenshot-open-trigger" data-screenshot-index="3">
+                View Screenshot &rarr;
+              </a>
+              <a href="/validation/" class="video-caption-link">
+                Dedicated Page &rarr;
+              </a>
+              <a href="/screenshots/it-validation.png" target="_blank" rel="noopener noreferrer" class="video-caption-link">
+                Direct PNG &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- GxP Backup & Disaster Recovery Console Showcase -->
+        <div class="video-showcase-container" id="backup" data-alias="disaster-recovery,backup-recovery,gxp-backup,backup-console">
+          <div class="video-header">
+            <div class="video-title-group">
+              <span class="video-status-dot"></span>
+              <h3 class="video-title">Platform Showcase: GxP Backup &amp; Disaster Recovery Console</h3>
+              <a href="#backup" class="video-anchor-link" title="Direct link to this demo" aria-label="Direct link to this demo">#</a>
+            </div>
+            <div class="video-actions">
+              <button type="button" class="copy-link-btn" data-copy-url="#backup" title="Copy direct link to this demo">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                <span>Copy Link</span>
+              </button>
+              <span class="badge-gold">21 CFR &sect; 11.10(c)</span>
+            </div>
+          </div>
+          <div class="screenshot-image-wrapper screenshot-trigger" data-screenshot-index="4" title="Click to view full-resolution screenshot">
+            <img
+              src="/screenshots/backup-disaster-recovery.png"
+              alt="GxP Backup &amp; Disaster Recovery Console"
+              loading="lazy"
+            />
+            <div class="screenshot-overlay-hint">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>Click to enlarge (1024×730)</span>
+            </div>
+          </div>
+          <div class="video-caption">
+            <div class="video-caption-notes">
+              SOP-IT-018 &amp; SOP-IT-019 Enterprise Governance: Automated AES-256 cloud snapshots with continuous WAL replication, qualified benchtop manual backup protocols, periodic sandbox restoration drills (1.5h achieved RTO / 0.12h achieved RPO), and ALCOA+ enduring data integrity.
+            </div>
+            <div class="video-caption-actions">
+              <a href="#" class="video-caption-link screenshot-open-trigger" data-screenshot-index="4">
+                View Screenshot &rarr;
+              </a>
+              <a href="/backup/" class="video-caption-link">
+                Dedicated Page &rarr;
+              </a>
+              <a href="/screenshots/backup-disaster-recovery.png" target="_blank" rel="noopener noreferrer" class="video-caption-link">
+                Direct PNG &rarr;
               </a>
             </div>
           </div>
@@ -629,7 +1054,7 @@
 
       <!-- Contact & Collaboration Section -->
       <section id="contact">
-        <h2 class="section-title">Contact & Pilot Access</h2>
+        <h2 class="section-title">Contact &amp; Pilot Access</h2>
         <p class="section-text">
           We are actively partnering with innovative biopharma, biotech, and medical device organizations to deploy tailored GxPChat pilot environments.
         </p>
@@ -659,13 +1084,221 @@
         GxPChat is developed by <a href="https://saram.io" class="service-link" target="_blank" rel="noopener noreferrer">Saram Consulting</a>.
       </div>
       <div style="opacity: 0.8;">
-        Built for 21 CFR Part 11 & GxP Compliance
+        Built for 21 CFR Part 11 &amp; GxP Compliance
       </div>
     </footer>
   </div>
 
+  <!-- Lightbox Modal for High-Resolution Screenshot Inspection -->
+  <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+    <div class="lightbox-inner">
+      <button type="button" class="lightbox-close-btn" id="lightboxCloseBtn" title="Close (Esc)" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="lightbox-image-container">
+        <img id="lightboxImage" class="lightbox-image" src="" alt="GxP Application Screenshot" />
+      </div>
+      <div class="lightbox-bar">
+        <div class="lightbox-info">
+          <span id="lightboxTitle" class="lightbox-title"></span>
+          <span id="lightboxCounter" class="lightbox-counter"></span>
+        </div>
+        <div class="lightbox-controls">
+          <button type="button" class="lightbox-btn" id="lightboxPrevBtn" title="Previous screenshot (Left Arrow)">
+            &larr; Prev
+          </button>
+          <button type="button" class="lightbox-btn" id="lightboxNextBtn" title="Next screenshot (Right Arrow)">
+            Next &rarr;
+          </button>
+          <a id="lightboxDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="lightbox-btn">
+            Open Original &nearr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
     (function () {
+      // Screenshot Explorer & Lightbox Data
+      const screenshots = [
+        {
+          id: "qms-screenshot",
+          tabAliases: ["qms", "enterprise-qms", "qms-dashboard"],
+          title: "Enterprise QMS & System of Record",
+          badge: "21 CFR Part 11",
+          src: "/screenshots/enterprise-qms.png",
+          notes: "Life Sciences QMS & CSV System of Record \u2022 3-Database division of labor (PostgreSQL SoR, Qdrant Vector, Memgraph LPG) with zero-trust EvidenceGate verification and real-time immutable audit trail stream.",
+          pageUrl: "/dashboard/"
+        },
+        {
+          id: "asset-screenshot",
+          tabAliases: ["asset", "asset-governance", "equipment-register"],
+          title: "GxP Asset Governance & Equipment Qualification",
+          badge: "EU Annex 11 / Part 11",
+          src: "/screenshots/asset-management.png",
+          notes: "Instrumentation Register & CMMS Calibration \u2022 204 enrolled assets with 100% NIST-traceable calibration compliance, automated maintenance alerts, and electronic signature audit logging.",
+          pageUrl: "/asset/"
+        },
+        {
+          id: "ticket-screenshot",
+          tabAliases: ["ticket", "it-ticket", "it-helpdesk", "service-desk"],
+          title: "IT Help Desk & GxP Service Desk",
+          badge: "ITIL & Part 11",
+          src: "/screenshots/it-help-desk.png",
+          notes: "Real-time visibility across GxP computerized systems \u2022 Automated ITIL triage queue with dual-track 21 CFR Part 11 routing, electronic signature validation race-condition triage, and CAPA integration.",
+          pageUrl: "/ticket/"
+        },
+        {
+          id: "validation-screenshot",
+          tabAliases: ["validation", "csv", "csa", "csv-csa"],
+          title: "CSV / CSA Validation Governance Platform",
+          badge: "ISPE GAMP 5 & CSA",
+          src: "/screenshots/it-validation.png",
+          notes: "Continuous algorithmic verification across life sciences computerized systems: V-Model traceability matrix (RTM), automated test script execution status (298 Pass, 154 Fail), GAMP 5 software categorization (Cat 3, 4, 5), and automated Validation Summary Report (VSR) generation.",
+          pageUrl: "/validation/"
+        },
+        {
+          id: "backup-screenshot",
+          tabAliases: ["backup", "disaster-recovery", "recovery"],
+          title: "GxP Backup & Disaster Recovery Console",
+          badge: "21 CFR \u00a7 11.10(c)",
+          src: "/screenshots/backup-disaster-recovery.png",
+          notes: "SOP-IT-018 & SOP-IT-019 Enterprise Governance: Automated AES-256 cloud snapshots with continuous WAL replication, qualified benchtop manual backup protocols, periodic sandbox restoration drills (1.5h achieved RTO / 0.12h achieved RPO), and ALCOA+ enduring data integrity.",
+          pageUrl: "/backup/"
+        }
+      ];
+
+      let currentTabIdx = 0;
+      let currentLightboxIdx = 0;
+
+      // Elements
+      const activeTitle = document.getElementById("screenshotActiveTitle");
+      const activeBadge = document.getElementById("screenshotActiveBadge");
+      const activeImg = document.getElementById("activeScreenshotImg");
+      const captionNotes = document.getElementById("screenshotCaptionNotes");
+      const modulePageLink = document.getElementById("screenshotModulePageLink");
+      const directImgLink = document.getElementById("screenshotDirectImgLink");
+      const tabButtons = document.querySelectorAll(".screenshot-tab-btn");
+      const copyScreenshotBtn = document.getElementById("copyScreenshotLinkBtn");
+
+      function updateScreenshotExplorer(idx) {
+        if (idx < 0 || idx >= screenshots.length) return;
+        currentTabIdx = idx;
+        const item = screenshots[idx];
+
+        tabButtons.forEach(function (btn, bIdx) {
+          const isActive = bIdx === idx;
+          btn.classList.toggle("active", isActive);
+          btn.setAttribute("aria-selected", isActive ? "true" : "false");
+        });
+
+        if (activeTitle) activeTitle.textContent = "GxP Suite Explorer: " + item.title;
+        if (activeBadge) activeBadge.textContent = item.badge;
+        if (activeImg) {
+          activeImg.src = item.src;
+          activeImg.alt = item.title;
+        }
+        if (captionNotes) captionNotes.textContent = item.notes;
+        if (modulePageLink) {
+          modulePageLink.href = item.pageUrl;
+          modulePageLink.style.display = item.pageUrl ? "inline-block" : "none";
+        }
+        if (directImgLink) directImgLink.href = item.src;
+        if (copyScreenshotBtn) {
+          copyScreenshotBtn.setAttribute("data-copy-url", "#" + item.id);
+        }
+      }
+
+      tabButtons.forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const idx = parseInt(btn.getAttribute("data-index"), 10);
+          updateScreenshotExplorer(idx);
+        });
+      });
+
+      // Lightbox functionality
+      const lightboxModal = document.getElementById("lightboxModal");
+      const lightboxImage = document.getElementById("lightboxImage");
+      const lightboxTitle = document.getElementById("lightboxTitle");
+      const lightboxCounter = document.getElementById("lightboxCounter");
+      const lightboxDirectLink = document.getElementById("lightboxDirectLink");
+      const lightboxCloseBtn = document.getElementById("lightboxCloseBtn");
+      const lightboxPrevBtn = document.getElementById("lightboxPrevBtn");
+      const lightboxNextBtn = document.getElementById("lightboxNextBtn");
+
+      function openLightbox(idx) {
+        if (idx < 0) idx = 0;
+        if (idx >= screenshots.length) idx = screenshots.length - 1;
+        currentLightboxIdx = idx;
+        const item = screenshots[idx];
+
+        lightboxImage.src = item.src;
+        lightboxImage.alt = item.title;
+        lightboxTitle.textContent = item.title;
+        lightboxCounter.textContent = (idx + 1) + " of " + screenshots.length;
+        lightboxDirectLink.href = item.src;
+
+        lightboxModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeLightbox() {
+        lightboxModal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      function prevLightbox() {
+        const nextIdx = (currentLightboxIdx - 1 + screenshots.length) % screenshots.length;
+        openLightbox(nextIdx);
+      }
+
+      function nextLightbox() {
+        const nextIdx = (currentLightboxIdx + 1) % screenshots.length;
+        openLightbox(nextIdx);
+      }
+
+      const screenshotTriggerWrapper = document.getElementById("screenshotTriggerWrapper");
+      if (screenshotTriggerWrapper) {
+        screenshotTriggerWrapper.addEventListener("click", function () {
+          openLightbox(currentTabIdx);
+        });
+      }
+
+      document.querySelectorAll(".screenshot-trigger").forEach(function (el) {
+        el.addEventListener("click", function () {
+          const idx = parseInt(el.getAttribute("data-screenshot-index"), 10);
+          openLightbox(isNaN(idx) ? 0 : idx);
+        });
+      });
+
+      document.querySelectorAll(".screenshot-open-trigger").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          const idx = parseInt(el.getAttribute("data-screenshot-index"), 10);
+          openLightbox(isNaN(idx) ? 0 : idx);
+        });
+      });
+
+      if (lightboxCloseBtn) lightboxCloseBtn.addEventListener("click", closeLightbox);
+      if (lightboxPrevBtn) lightboxPrevBtn.addEventListener("click", prevLightbox);
+      if (lightboxNextBtn) lightboxNextBtn.addEventListener("click", nextLightbox);
+
+      if (lightboxModal) {
+        lightboxModal.addEventListener("click", function (e) {
+          if (e.target === lightboxModal) {
+            closeLightbox();
+          }
+        });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (!lightboxModal.classList.contains("active")) return;
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowLeft") prevLightbox();
+        if (e.key === "ArrowRight") nextLightbox();
+      });
+
       // Helper to copy text to clipboard with fallback
       async function copyText(text) {
         if (navigator.clipboard && window.isSecureContext) {
@@ -693,29 +1326,49 @@
       }
 
       // Attach copy link event handlers
-      document.querySelectorAll(".copy-link-btn").forEach(function (button) {
-        button.addEventListener("click", async function (e) {
-          e.preventDefault();
-          const targetHash = button.getAttribute("data-copy-url");
-          const url = new URL(targetHash, window.location.href).href;
-          const success = await copyText(url);
-          
-          if (success) {
-            const originalHTML = button.innerHTML;
-            button.classList.add("copied");
-            button.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Copied!</span>';
-            setTimeout(function () {
-              button.innerHTML = originalHTML;
-              button.classList.remove("copied");
-            }, 2000);
-          }
+      function bindCopyButtons() {
+        document.querySelectorAll(".copy-link-btn").forEach(function (button) {
+          button.addEventListener("click", async function (e) {
+            e.preventDefault();
+            const targetHash = button.getAttribute("data-copy-url");
+            const url = new URL(targetHash, window.location.href).href;
+            const success = await copyText(url);
+            
+            if (success) {
+              const originalHTML = button.innerHTML;
+              button.classList.add("copied");
+              button.innerHTML = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Copied!</span>';
+              setTimeout(function () {
+                button.innerHTML = originalHTML;
+                button.classList.remove("copied");
+              }, 2000);
+            }
+          });
         });
-      });
+      }
+      bindCopyButtons();
 
       // Handle hash alias resolution and smooth focus
       function handleHash() {
         const rawHash = window.location.hash.replace(/^#/, "");
         if (!rawHash) return;
+
+        // Check if hash matches a screenshot item directly
+        for (let i = 0; i < screenshots.length; i++) {
+          const item = screenshots[i];
+          if (item.id === rawHash || item.tabAliases.includes(rawHash)) {
+            updateScreenshotExplorer(i);
+            const scContainer = document.getElementById("screenshots");
+            if (scContainer) {
+              scContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+              scContainer.classList.add("is-targeted");
+              setTimeout(function () {
+                scContainer.classList.remove("is-targeted");
+              }, 2500);
+            }
+            return;
+          }
+        }
 
         let el = document.getElementById(rawHash);
         if (!el) {

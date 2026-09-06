@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GxPChat Demo: QMS Dashboard & System of Record | 21 CFR Part 11 Regulated AI</title>
-  <meta name="description" content="Live walkthrough of the Life Sciences QMS dashboard, agent telemetry, compliance graph explorer, and audit trail system of record." />
-  <link rel="canonical" href="https://gxpchat.com/dashboard/" />
+  <title>GxPChat Platform: GxP Backup & Disaster Recovery Console | 21 CFR Part 11 Regulated AI</title>
+  <meta name="description" content="SOP-IT-018 & SOP-IT-019 Enterprise Governance: Automated AES-256 cloud snapshots with continuous WAL replication, qualified benchtop manual backup protocols, and periodic restoration drills." />
+  <link rel="canonical" href="https://gxpchat.com/backup/" />
 
   <!-- Open Graph / Social Media Preview -->
-  <meta property="og:type" content="video.other" />
+  <meta property="og:type" content="website" />
   <meta property="og:site_name" content="GxPChat" />
-  <meta property="og:url" content="https://gxpchat.com/dashboard/" />
-  <meta property="og:title" content="GxPChat Demo: QMS Dashboard & System of Record" />
-  <meta property="og:description" content="Live walkthrough of the Life Sciences QMS dashboard, agent telemetry, compliance graph explorer, and audit trail system of record." />
-  <meta property="og:image" content="https://gxpchat.com/logo.png" />
-  <meta property="og:video" content="https://files.gxpchat.com/gxpchat-dashboard.mov" />
-  <meta property="og:video:type" content="video/quicktime" />
-  <meta name="twitter:card" content="player" />
-  <meta name="twitter:url" content="https://gxpchat.com/dashboard/" />
-  <meta name="twitter:title" content="GxPChat Demo: QMS Dashboard & System of Record" />
-  <meta name="twitter:description" content="Live walkthrough of the Life Sciences QMS dashboard, agent telemetry, compliance graph explorer, and audit trail system of record." />
-  <meta name="twitter:image" content="https://gxpchat.com/logo.png" />
+  <meta property="og:url" content="https://gxpchat.com/backup/" />
+  <meta property="og:title" content="GxPChat Platform: GxP Backup & Disaster Recovery Console" />
+  <meta property="og:description" content="SOP-IT-018 & SOP-IT-019 Enterprise Governance, automated cloud snapshots, and periodic sandbox restoration drills adhering to 21 CFR § 11.10(c) and EU Annex 11." />
+  <meta property="og:image" content="https://gxpchat.com/screenshots/backup-disaster-recovery.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="730" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://gxpchat.com/backup/" />
+  <meta name="twitter:title" content="GxPChat Platform: GxP Backup & Disaster Recovery Console" />
+  <meta name="twitter:description" content="SOP-IT-018 & SOP-IT-019 Enterprise Governance, automated cloud snapshots, and periodic sandbox restoration drills adhering to 21 CFR § 11.10(c) and EU Annex 11." />
+  <meta name="twitter:image" content="https://gxpchat.com/screenshots/backup-disaster-recovery.png" />
 
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -131,7 +131,7 @@
 
     .video-title {
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-color);
       font-weight: 600;
       margin: 0;
@@ -144,12 +144,40 @@
       background-color: #16a34a;
       box-shadow: 0 0 6px rgba(22, 163, 74, 0.4);
       display: inline-block;
+      flex-shrink: 0;
     }
 
     .video-actions {
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+
+    .copy-link-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      color: var(--text-color);
+      padding: 3px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+      outline: none;
+    }
+
+    .copy-link-btn:hover {
+      background-color: #f4f4f5;
+      border-color: rgba(0, 0, 0, 0.25);
+    }
+
+    .copy-link-btn.copied {
+      background-color: #f0fdf4;
+      border-color: #86efac;
+      color: #166534;
     }
 
     .badge-gold {
@@ -167,47 +195,49 @@
       align-items: center;
     }
 
-    .copy-link-btn {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      color: var(--text-color);
-      padding: 3px 8px;
-      border-radius: 4px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: background-color 0.2s, border-color 0.2s, color 0.2s;
-    }
-
-    .copy-link-btn:hover {
-      background-color: #f4f4f5;
-      border-color: rgba(0, 0, 0, 0.25);
-    }
-
-    .copy-link-btn.copied {
-      background-color: #f0fdf4;
-      border-color: #86efac;
-      color: #166534;
-    }
-
-    .video-wrapper {
+    .screenshot-image-wrapper {
       position: relative;
       width: 100%;
       border-radius: 4px;
       overflow: hidden;
-      background-color: #000000;
+      background-color: #09090b;
       border: 1px solid var(--border-color);
+      cursor: zoom-in;
     }
 
-    .video-wrapper video {
+    .screenshot-image-wrapper img {
       width: 100%;
       height: auto;
       display: block;
-      outline: none;
-      background-color: #000000;
+      transition: opacity 0.25s ease;
+    }
+
+    .screenshot-image-wrapper:hover img {
+      opacity: 0.97;
+    }
+
+    .screenshot-overlay-hint {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.75);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 4px;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      pointer-events: none;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    .screenshot-image-wrapper:hover .screenshot-overlay-hint {
+      opacity: 1;
     }
 
     .video-caption {
@@ -234,9 +264,10 @@
     }
 
     .service-link {
+      text-underline-offset: 4px;
       color: var(--text-color);
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
       -webkit-text-decoration-color: var(--underline-color);
       text-decoration-color: var(--underline-color);
       transition: text-decoration-color 0.2s, color 0.2s;
@@ -247,17 +278,93 @@
       text-decoration-color: var(--underline-hover);
     }
 
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background-color: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 1280px;
+      width: 100%;
+      max-height: 94vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-image-container {
+      max-width: 100%;
+      max-height: 82vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 82vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: -42px;
+      right: 0;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .lightbox-close-btn:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
+
     footer {
       opacity: 0.55;
-      margin-top: 40px;
+      margin-top: 36px;
       font-size: 11px;
       border-top: 1px solid var(--border-color);
       padding-top: 16px;
+      transition: opacity 0.2s ease;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
       gap: 12px;
+    }
+
+    footer:hover {
+      opacity: 0.9;
     }
 
     @media (max-width: 768px) {
@@ -278,58 +385,48 @@
     </nav>
 
     <header class="hero-text">
-      <h1>QMS Dashboard &amp; System of Record</h1>
+      <h1>GxP Backup &amp; Disaster Recovery Console</h1>
       <p>
-        Live walkthrough of the Life Sciences QMS dashboard, agent telemetry, compliance graph explorer, and audit trail system of record.
+        SOP-IT-018 &amp; SOP-IT-019 Enterprise Governance: Automated AES-256 cloud snapshots with continuous WAL replication, qualified benchtop manual backup protocols, periodic sandbox restoration drills, and ALCOA+ data integrity adhering to 21 CFR &sect; 11.10(c) and EU Annex 11 Clauses 7 &amp; 16.
       </p>
     </header>
 
     <main>
-      <div class="video-showcase-container" id="dashboard">
+      <div class="video-showcase-container" id="backup">
         <div class="video-header">
           <div class="video-title-group">
             <span class="video-status-dot"></span>
-            <h3 class="video-title">Live Demo: QMS Dashboard &amp; System of Record</h3>
+            <h3 class="video-title">Platform Showcase: GxP Backup &amp; Disaster Recovery Console</h3>
           </div>
           <div class="video-actions">
             <button type="button" class="copy-link-btn" id="copyBtn" title="Copy shareable link to this demo">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
               <span>Copy Link</span>
             </button>
-            <span class="badge-gold">QMS Portal</span>
+            <span class="badge-gold">21 CFR &sect; 11.10(c)</span>
           </div>
         </div>
-        <div class="video-wrapper">
-          <video
-            id="gxpDemoVideoDashboard"
-            controls
-            playsinline
-            preload="metadata"
-            poster="/screenshots/enterprise-qms.png"
-          >
-            <source src="https://files.gxpchat.com/gxpchat-dashboard.mov" type="video/quicktime" />
-            <source src="https://files.gxpchat.com/gxpchat-dashboard.mov" type="video/mp4" />
-            <p style="padding: 20px; color: var(--text-muted);">
-              Your browser does not support the video tag. You can 
-              <a href="https://files.gxpchat.com/gxpchat-dashboard.mov" target="_blank" rel="noopener noreferrer" class="service-link">
-                download the video demo here
-              </a>.
-            </p>
-          </video>
+        <div class="screenshot-image-wrapper" id="screenshotWrapper" title="Click to view full-resolution screenshot">
+          <img
+            id="mainScreenshotImg"
+            src="/screenshots/backup-disaster-recovery.png"
+            alt="GxP Backup &amp; Disaster Recovery Console"
+          />
+          <div class="screenshot-overlay-hint">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+            <span>Click to enlarge (1024×730)</span>
+          </div>
         </div>
         <div class="video-caption">
           <div class="video-caption-notes">
-            Live walkthrough of the Life Sciences QMS dashboard, agent telemetry, compliance graph explorer, and audit trail system of record.
+            Active backup policies (6), 100% passed periodic restoration drills, 1.5h achieved RTO (target &le; 4.0h), 0.12h achieved RPO (target &le; 1.0h), and autonomous AI Sentry audit verification.
           </div>
           <div class="video-caption-actions">
-            <a href="/#dashboard" class="service-link">
+            <a href="/#backup" class="service-link">
               View on main page &rarr;
             </a>
-            <a href="/screenshots/enterprise-qms.png" target="_blank" rel="noopener noreferrer" class="service-link">
-              View Screenshot &rarr;
-            </a>
-            <a href="https://files.gxpchat.com/gxpchat-dashboard.mov" target="_blank" rel="noopener noreferrer" class="service-link">
-              Direct MOV &rarr;
+            <a href="/screenshots/backup-disaster-recovery.png" target="_blank" rel="noopener noreferrer" class="service-link">
+              Direct PNG &rarr;
             </a>
           </div>
         </div>
@@ -350,6 +447,18 @@
         Built for 21 CFR Part 11 &amp; GxP Compliance
       </div>
     </footer>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+    <div class="lightbox-inner">
+      <button type="button" class="lightbox-close-btn" id="lightboxCloseBtn" title="Close (Esc)" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="lightbox-image-container">
+        <img id="lightboxImage" class="lightbox-image" src="/screenshots/backup-disaster-recovery.png" alt="GxP Backup &amp; Disaster Recovery Console" />
+      </div>
+    </div>
   </div>
 
   <script>
@@ -383,6 +492,36 @@
           button.innerHTML = originalHTML;
           button.classList.remove("copied");
         }, 2000);
+      }
+    });
+
+    // Lightbox modal toggle
+    const lightboxModal = document.getElementById("lightboxModal");
+    const screenshotWrapper = document.getElementById("screenshotWrapper");
+    const lightboxCloseBtn = document.getElementById("lightboxCloseBtn");
+
+    if (screenshotWrapper) {
+      screenshotWrapper.addEventListener("click", function () {
+        lightboxModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+    }
+
+    function closeLightbox() {
+      lightboxModal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    if (lightboxCloseBtn) lightboxCloseBtn.addEventListener("click", closeLightbox);
+    if (lightboxModal) {
+      lightboxModal.addEventListener("click", function (e) {
+        if (e.target === lightboxModal) closeLightbox();
+      });
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && lightboxModal.classList.contains("active")) {
+        closeLightbox();
       }
     });
   </script>
